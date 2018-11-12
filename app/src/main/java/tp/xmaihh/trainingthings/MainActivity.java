@@ -5,6 +5,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
 import tp.xmaihh.trainingthings.multitype.MultiTypeActivity;
+import tp.xmaihh.trainingthings.retrofithttp.ui.RetrofitActivity;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -14,6 +15,6 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
 
-//        new Thread(() -> startActivity(new Intent(MainActivity.this, MultiTypeActivity.class))).start();
+        new Thread(() -> startActivity(new Intent(MainActivity.this, RetrofitActivity.class))).start();
     }
 }

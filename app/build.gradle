@@ -23,6 +23,7 @@ android {
             res.srcDirs += "src/main/res"
             res.srcDirs += "src/main/res-flexbox"
             res.srcDirs += "src/main/res-multitype"
+            res.srcDirs += "src/main/res-retrofithttp"
         }
     }
     compileOptions {
@@ -44,4 +45,13 @@ dependencies {
     // multitype 多类型列表视图 <href https://github.com/drakeet/MultiType/>
     implementation 'me.drakeet.multitype:multitype:3.4.4'
     implementation 'com.android.support:recyclerview-v7:27.1.1'
+    //MVP+Retofit+RxJava+Dagger高度解耦 <href https://github.com/reggie1996/FaceDetect />
+    implementation 'com.squareup.retrofit2:retrofit:2.4.0'
+    implementation 'com.squareup.retrofit2:converter-gson:2.4.0'
+    implementation 'com.squareup.retrofit2:adapter-rxjava2:2.4.0'
+    implementation 'io.reactivex.rxjava2:rxjava:2.2.3'
+    implementation 'io.reactivex.rxjava2:rxandroid:2.1.0'
+    implementation 'com.google.dagger:dagger:2.19'
+    implementation 'com.google.dagger:dagger-android-support:2.19'
+    annotationProcessor 'com.google.dagger:dagger-compiler:2.19'
 }
