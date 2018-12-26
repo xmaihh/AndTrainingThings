@@ -17,4 +17,5 @@ public class MainActivity extends AppCompatActivity {
 
         new Thread(() -> startActivity(new Intent(MainActivity.this, RetrofitActivity.class))).start();
     }
+    
 }
