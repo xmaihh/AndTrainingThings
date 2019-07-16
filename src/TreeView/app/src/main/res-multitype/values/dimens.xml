@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<resources>
+    <dimen name="normal_space">12dp</dimen>
+    <dimen name="category_icon_size">24dp</dimen>
+    <dimen name="post_image_height">96dp</dimen>
+</resources>
