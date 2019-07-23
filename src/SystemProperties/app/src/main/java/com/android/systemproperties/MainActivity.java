@@ -1,6 +1,9 @@
 package com.android.systemproperties;
 
+import android.graphics.Color;
 import android.os.Bundle;
+import android.text.Spannable;
+import android.text.style.ForegroundColorSpan;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -11,13 +14,6 @@ import java.lang.reflect.Method;
 
 public class MainActivity extends AppCompatActivity {
 
-    // Used to load the 'system-properties' library on application startup.
-//    static {
-//
-//        System.loadLibrary("system-properties");
-//
-//    }
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -25,8 +21,24 @@ public class MainActivity extends AppCompatActivity {
 
         // Example of a call to a native method
         TextView tv = findViewById(R.id.sample_text);
-//        tv.setText(native_get("ro.build.display.id") + "\n" + getProperty("ro.product.device"));
-        tv.setText(GetProperties.getString("ro.product.brand"));
+
+        appendColoredText(tv, "By native get", Color.RED);
+        tv.append("\n" + GetProperties.getString("ro.product.brand"));
+        tv.append("\n" + GetProperties.getString("ro.build.display.id"));
+        tv.append("\n" + GetProperties.getString("ro.product.model"));
+        tv.append("\n" + GetProperties.getString("ro.build.version.sdk"));
+        tv.append("\n" + GetProperties.getString("ro.product.cpu.abi"));
+        tv.append("\n" + GetProperties.getString("ro.build.type"));
+
+
+        tv.append("\n");
+        appendColoredText(tv, "By using reflection", Color.BLUE);
+        tv.append("\n" + getProperty("ro.product.brand"));
+        tv.append("\n" + getProperty("ro.build.display.id"));
+        tv.append("\n" + getProperty("ro.product.model"));
+        tv.append("\n" + getProperty("ro.build.version.sdk"));
+        tv.append("\n" + getProperty("ro.product.cpu.abi"));
+        tv.append("\n" + getProperty("ro.build.type"));
     }
 
     /**
@@ -38,8 +50,6 @@ public class MainActivity extends AppCompatActivity {
 //    private static native String native_get(String key);
 //
 //    private static native String native_get(String key, String def);
-
-
     public static String getProperty(String key) {
         String value = "";
         try {
@@ -76,4 +86,12 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    private static void appendColoredText(TextView tv, String text, int color) {
+        int start = tv.getText().length();
+        tv.append(text);
+        int end = tv.getText().length();
+
+        Spannable spannableText = (Spannable) tv.getText();
+        spannableText.setSpan(new ForegroundColorSpan(color), start, end, 0);
+    }
 }
